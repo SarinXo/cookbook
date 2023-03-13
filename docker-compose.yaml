@@ -1,0 +1,24 @@
+services:
+  db:
+    container_name: "cookbook-db"
+    image: postgres:13.3
+    restart: always
+    expose:
+      - "5533"
+    command: -p 5533
+    environment:
+      POSTGRES_PASSWORD: "pibu"
+      POSTGRES_USER: "cookbook"
+      POSTGRES_DB: "cookbook"
+    ports:
+      - "5533:5533"
+
+  pgadmin:
+    container_name: "pgadmin"
+
+    image: dpage/pgadmin4:latest
+    ports:
+      - 80:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: kavai

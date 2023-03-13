@@ -1,1 +1,14 @@
-
+spring:
+ datasource:
+  cookbook:
+   url: jdbc:postgresql://localhost:5533/cookbook
+   username: cookbook
+   password: pibu
+   driver-class-name: org.postgresql.Driver
+ flyway:
+  enabled: true
+  schemas: COOKBOOK
+ jpa:
+  properties:
+   hibernate:
+    default_schema: COOKBOOK
