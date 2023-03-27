@@ -18,6 +18,9 @@ public class Receipt {
     @Column(name = "id")
     private Long id;
 
+    @Column
+    private String name;
+
     @Column(name = "short_description")
     private String short_description;
 
