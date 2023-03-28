@@ -49,9 +49,9 @@ public class Receipt {
     private String authorId;
 
     @Column(name = "categoryId")
-    private int categoryId;
+    private Integer categoryId;
 
     @Column(name = "energyValueId")
-    private int energyValueId;
+    private Integer energyValueId;
 
 }
