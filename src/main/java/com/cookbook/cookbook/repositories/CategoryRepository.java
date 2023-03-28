@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface CategoryRepo extends JpaRepository<Category, Integer> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     @Query("select new com.cookbook.cookbook.model.CategoryIdAndNameDto(c.id, c.name) from Category c ")
-    List<CategoryIdAndNameDto> findData();
+    List<CategoryIdAndNameDto> findAllCategories();
 }

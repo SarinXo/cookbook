@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Receipt_Tab")
+@Table(name = "receipt_tab")
 public class Receipt {
 
     @Id
@@ -18,11 +18,11 @@ public class Receipt {
     @Column(name = "id")
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "short_description")
-    private String short_description;
+    @Column(name = "shortDescription")
+    private String shortDescription;
 
     @Column(name = "photo")
     private String photo;
@@ -39,19 +39,19 @@ public class Receipt {
     @Column(name = "editable")
     private String editable;
 
-    @Column(name = "cook_time")
-    private String cook_time;
+    @Column(name = "cookTime")
+    private String cookTime;
 
     @Column(name = "portions")
     private String portions;
 
-    @Column(name = "author_id")
-    private String author_id;
+    @Column(name = "authorId")
+    private String authorId;
 
-    @Column(name = "category_id")
-    private int category_id;
+    @Column(name = "categoryId")
+    private int categoryId;
 
-    @Column(name = "energy_value_id")
-    private int energy_value_id;
+    @Column(name = "energyValueId")
+    private int energyValueId;
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Author_Tab")
+@Table(name = "author_tab")
 public class Author {
 
     @Id
@@ -26,7 +26,7 @@ public class Author {
     @Column(name = "surname")
     private String surname;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "author_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "authorId")
     private List<Receipt> receipt = new ArrayList<>();
 
 }

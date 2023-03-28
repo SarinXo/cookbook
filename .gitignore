@@ -6,8 +6,8 @@ build/
 !**/src/test/**/build/
 
 ### Project ###
-src/main/java/com/cookbook/cookbook/controllers/v1/AuthorTabController.java
-src/main/java/com/cookbook/cookbook/repositories/AuthorRepo.java
+src/main/java/com/cookbook/cookbook/controllers/v1/AuthorController.java
+src/main/java/com/cookbook/cookbook/repositories/AuthorRepository.java
 
 ### STS ###
 .apt_generated
