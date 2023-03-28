@@ -1,4 +1,4 @@
-package com.cookbook.cookbook.model;
+package com.cookbook.cookbook.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.cookbook.cookbook.controllers.v1;
 
-import com.cookbook.cookbook.model.CategoryIdAndNameDto;
+import com.cookbook.cookbook.models.CategoryIdAndNameDto;
 import com.cookbook.cookbook.repositories.CategoryRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
