@@ -15,4 +15,3 @@ spring:
    hibernate:
     default_schema: COOKBOOK
 
-
