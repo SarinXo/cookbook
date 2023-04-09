@@ -1,6 +1,6 @@
 package com.cookbook.cookbook.services.impl;
 
-import com.cookbook.cookbook.exceptions.ResourceNotFoundException;
+import com.cookbook.cookbook.exceptions.NotFoundApiException;
 import com.cookbook.cookbook.models.authors.AuthorDto;
 import com.cookbook.cookbook.models.receipts.ReceiptDto;
 import com.cookbook.cookbook.repositories.ReceiptRepository;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 @Service
 public class ReceiptServiceImpl implements ReceiptService {
@@ -24,8 +23,8 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     @Override
     public ReceiptDto getReceiptById(Long receiptId) {
-        return convertReceiptToDto(receiptRepository.getReceipt(receiptId).orElseThrow(
-                () -> new ResourceNotFoundException("Receipt with id " + receiptId + " not found")));
+        return convertReceiptToDto(receiptRepository.findById(receiptId).orElseThrow(
+                () -> new NotFoundApiException("Receipt with id " + receiptId + " not found")));
     }
 
     private ReceiptDto convertReceiptToDto(Receipt receipt){
@@ -42,7 +41,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         //Convert a large string to a list strings
         if (Objects.nonNull(receipt.getReceipt())) {
             receiptDto.setReceipt(
-                    parseStringToList(receipt.getReceipt())
+                    parseReceiptStringToList(receipt.getReceipt())
             );
         }
         receiptDto.setRating(receipt.getRating());
@@ -55,9 +54,8 @@ public class ReceiptServiceImpl implements ReceiptService {
         return receiptDto;
     }
 
-    private List<String> parseStringToList(String string){
-        String[] result = string.split("        ");//8 spaces
-        return Arrays.asList(result);
+    private List<String> parseReceiptStringToList(String string){
+        return Arrays.asList(string.split("        "));//8 spaces. Databases need refactoring
     }
 
 }

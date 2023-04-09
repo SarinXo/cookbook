@@ -10,8 +10,7 @@ import java.util.Optional;
 
 public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
 
-    @Query("SELECT r FROM Receipt r WHERE r.id = :receiptId")
-    Optional<Receipt> getReceipt(@Param("receiptId") Long receiptId);
+    Optional<Receipt> findById(Long receiptId);
 
 
 }

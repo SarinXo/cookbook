@@ -17,13 +17,10 @@ import java.util.List;
 public class Author {
 
     @Id
-    @Column(name = "id")
     private String id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
     private String surname;
 
     @OneToMany(mappedBy = "authorId", cascade = CascadeType.ALL,

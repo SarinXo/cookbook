@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("internal/api")
+@RequestMapping("internal")
 public class ReceiptController {
 
     private final ReceiptService receiptService;
@@ -19,7 +19,7 @@ public class ReceiptController {
     }
 
     @ResponseBody
-    @GetMapping("/v1/receipts")
+    @GetMapping("/api/v1/receipts")
     public ReceiptDto getReceiptById(@RequestParam Long receipt){
         return receiptService.getReceiptById(receipt);
     }
