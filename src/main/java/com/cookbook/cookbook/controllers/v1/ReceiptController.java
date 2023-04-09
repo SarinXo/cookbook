@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("internal/api")
+@RequestMapping("internal")
 public class ReceiptController {
 
     private final ReceiptService receiptService;
@@ -18,7 +18,7 @@ public class ReceiptController {
         this.receiptService = receiptService;
     }
 
-    @GetMapping("/v1/receipts")
+    @GetMapping("/api/v1/receipts")
     public List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts(){
         return  receiptService.getAllReceipts();
     }
