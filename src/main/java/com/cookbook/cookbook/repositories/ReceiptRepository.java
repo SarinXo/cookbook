@@ -10,7 +10,12 @@ import java.util.List;
 
 public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
 
-    @Query("SELECT new com.cookbook.cookbook.models.receipts.ReceiptPhotoNameShortDescriptionDto(receipt.photo, receipt.name, receipt.shortDescription) FROM Receipt receipt WHERE receipt.categoryId.id = :categoryId")
+    @Query("SELECT new com.cookbook.cookbook.models.receipts.ReceiptPhotoNameShortDescriptionDto(" +
+            "receipt.photo, " +
+            "receipt.name, " +
+            "receipt.shortDescription) " +
+            "FROM Receipt receipt " +
+            "WHERE receipt.categoryId.id = :categoryId")
     List<ReceiptPhotoNameShortDescriptionDto> getReceiptsByCategoryId(
             @Param("categoryId") Integer categoryId
     );
