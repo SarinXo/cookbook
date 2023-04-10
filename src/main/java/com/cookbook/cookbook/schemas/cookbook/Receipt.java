@@ -1,6 +1,11 @@
 package com.cookbook.cookbook.schemas.cookbook;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +26,7 @@ public class Receipt {
     @Column(name = "short_description")
     private String shortDescription;
 
+    @Column(name = "photo")
     private String photo;
 
     private String ingredients;

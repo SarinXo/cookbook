@@ -1,5 +1,6 @@
 package com.cookbook.cookbook.services.impl;
 
+import com.cookbook.cookbook.models.receipts.ReceiptPhotoNameShortDescriptionDto;
 import com.cookbook.cookbook.exceptions.NotFoundApiException;
 import com.cookbook.cookbook.models.authors.AuthorDto;
 import com.cookbook.cookbook.models.receipts.ReceiptDto;
@@ -56,6 +57,10 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     private List<String> parseReceiptStringToList(String string){
         return Arrays.asList(string.split("        "));//8 spaces. Databases need refactoring
+    }
+
+    public List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts(){
+        return receiptRepository.getAllReceipts();
     }
 
 }
