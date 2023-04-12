@@ -33,4 +33,3 @@ public class Category {
             fetch = FetchType.LAZY)
     private List<Receipt> category = new ArrayList<>();
 }
-
