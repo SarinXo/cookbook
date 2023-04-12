@@ -25,7 +25,8 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public ReceiptDto getReceiptById(Long receiptId) {
         return convertReceiptToDto(receiptRepository.findById(receiptId).orElseThrow(
-                () -> new NotFoundApiException("Receipt with id " + receiptId + " not found")));
+                () -> new NotFoundApiException("Receipt with id " + receiptId + " not found"))
+        );
     }
 
     private ReceiptDto convertReceiptToDto(Receipt receipt){
@@ -65,7 +66,12 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     public List<ReceiptPhotoNameShortDescriptionDto>
     getReceiptsByCategoryId(Integer categoryId){
-        return receiptRepository.getReceiptsByCategoryId(categoryId);
+
+        List<ReceiptPhotoNameShortDescriptionDto> dataRequestList= receiptRepository.getReceiptsByCategoryId(categoryId);
+        if(!dataRequestList.isEmpty())
+            return dataRequestList;
+
+        throw new NotFoundApiException("Receipts with category id: " + categoryId + " not found");
     }
 
 

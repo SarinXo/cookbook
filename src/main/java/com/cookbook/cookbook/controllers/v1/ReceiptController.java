@@ -4,8 +4,9 @@ package com.cookbook.cookbook.controllers.v1;
 import com.cookbook.cookbook.models.receipts.ReceiptPhotoNameShortDescriptionDto;
 import com.cookbook.cookbook.models.receipts.ReceiptDto;
 import com.cookbook.cookbook.services.ReceiptService;
-import org.hibernate.annotations.Parameter;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,12 +30,15 @@ public class ReceiptController {
         return receiptService.getReceiptById(id);
     }
 
-    @GetMapping("/api/v1/receipts")
-    public List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts(){
-        return  receiptService.getAllReceipts();
+    @GetMapping(value ="/api/v1/receipts")
+    public List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts() {
+        return receiptService.getAllReceipts();
+    }
 
-    @GetMapping("/api/v1/receipts/category={categoryId}")
-    public List<ReceiptPhotoNameShortDescriptionDto> getCategoryListById(@PathVariable Integer categoryId){
+    @ResponseBody
+    @GetMapping(value ="/api/v1/category_id={category_id}/receipts")
+    public List<ReceiptPhotoNameShortDescriptionDto>
+    getCategoryListById(@PathVariable(name = "category_id") Integer categoryId){
         return receiptService.getReceiptsByCategoryId(categoryId);
     }
 
