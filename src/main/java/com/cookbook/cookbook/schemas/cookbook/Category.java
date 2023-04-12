@@ -1,6 +1,5 @@
 package com.cookbook.cookbook.schemas.cookbook;
 
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,3 +33,4 @@ public class Category {
             fetch = FetchType.LAZY)
     private List<Receipt> category = new ArrayList<>();
 }
+

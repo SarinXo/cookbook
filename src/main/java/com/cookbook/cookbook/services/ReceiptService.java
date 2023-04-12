@@ -11,4 +11,8 @@ public interface ReceiptService {
 
     List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts();
 
+    List<ReceiptPhotoNameShortDescriptionDto> getReceiptsByCategoryId(
+            Integer categoryId
+    );
+
 }

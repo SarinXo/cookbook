@@ -32,6 +32,10 @@ public class ReceiptController {
     @GetMapping("/api/v1/receipts")
     public List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts(){
         return  receiptService.getAllReceipts();
+
+    @GetMapping("/api/v1/receipts/category={categoryId}")
+    public List<ReceiptPhotoNameShortDescriptionDto> getCategoryListById(@PathVariable Integer categoryId){
+        return receiptService.getReceiptsByCategoryId(categoryId);
     }
 
 }

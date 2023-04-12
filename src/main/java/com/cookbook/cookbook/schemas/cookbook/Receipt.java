@@ -29,7 +29,6 @@ public class Receipt {
     @Column(name = "short_description")
     private String shortDescription;
 
-    @Column(name = "photo")
     private String photo;
 
     private String ingredients;

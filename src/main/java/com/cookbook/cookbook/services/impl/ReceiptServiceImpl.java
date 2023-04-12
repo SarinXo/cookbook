@@ -63,4 +63,10 @@ public class ReceiptServiceImpl implements ReceiptService {
         return receiptRepository.getAllReceipts();
     }
 
+    public List<ReceiptPhotoNameShortDescriptionDto>
+    getReceiptsByCategoryId(Integer categoryId){
+        return receiptRepository.getReceiptsByCategoryId(categoryId);
+    }
+
+
 }

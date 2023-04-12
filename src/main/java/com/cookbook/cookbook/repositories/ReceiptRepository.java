@@ -14,9 +14,22 @@ public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
 
     Optional<Receipt> findById(Long receiptId);
 
-    @Query("SELECT new com.cookbook.cookbook.models.receipts.ReceiptPhotoNameShortDescriptionDto(receipt.photo, receipt.name, receipt.shortDescription) FROM Receipt receipt")
+    @Query("SELECT new com.cookbook.cookbook.models.receipts.ReceiptPhotoNameShortDescriptionDto(" +
+            "receipt.photo, " +
+            "receipt.name, " +
+            "receipt.shortDescription) " +
+            "FROM Receipt receipt")
     List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts();
 
 
+    @Query("SELECT new com.cookbook.cookbook.models.receipts.ReceiptPhotoNameShortDescriptionDto(" +
+            "receipt.photo, " +
+            "receipt.name, " +
+            "receipt.shortDescription) " +
+            "FROM Receipt receipt " +
+            "WHERE receipt.categoryId.id = :categoryId")
+    List<ReceiptPhotoNameShortDescriptionDto> getReceiptsByCategoryId(
+            @Param("categoryId") Integer categoryId
+    );
 
 }
