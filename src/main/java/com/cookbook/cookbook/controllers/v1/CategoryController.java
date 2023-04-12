@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("internal/api")
+@RequestMapping("internal")
 public class CategoryController {
 
     private final CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService){this.categoryService = categoryService;}
 
-    @GetMapping("/v1/categories")
+    @GetMapping("/api/v1/categories")
     public List<CategoryIdAndNameDto> getAllCategories(){
         return categoryService.getAllCategories();
     }
