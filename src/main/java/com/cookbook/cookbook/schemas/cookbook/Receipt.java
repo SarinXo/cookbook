@@ -40,9 +40,9 @@ public class Receipt {
     private Boolean editable;
 
     @Column(name = "cook_time")
-    private String cookTime;
+    private Integer cookTime;
 
-    private String portions;
+    private Integer portions;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")

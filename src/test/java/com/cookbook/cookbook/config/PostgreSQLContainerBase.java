@@ -2,6 +2,7 @@ package com.cookbook.cookbook.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.autoconfigure.flyway.FlywayDataSource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.ContextConfiguration;
@@ -38,6 +39,7 @@ public abstract class PostgreSQLContainerBase {
 
             hikariDataSource.setJdbcUrl(PostgreSQLContainerBase.postgreDBContainer.getJdbcUrl());
             hikariDataSource.setUsername(PostgreSQLContainerBase.postgreDBContainer.getUsername());
+            hikariDataSource.setPassword(PostgreSQLContainerBase.postgreDBContainer.getPassword());
             hikariDataSource.setDriverClassName("org.postgresql.Driver");
 
             return hikariDataSource;

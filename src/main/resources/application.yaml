@@ -8,6 +8,8 @@ datasource:
 spring:
  flyway:
   enabled: true
+  #For tests
+  locations: classpath:/db/test_migration
   schemas: COOKBOOK
  jpa:
   properties:
