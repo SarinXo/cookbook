@@ -7,7 +7,10 @@ import com.cookbook.cookbook.schemas.cookbook.Category;
 import com.cookbook.cookbook.schemas.cookbook.EnergyValue;
 import com.cookbook.cookbook.schemas.cookbook.Receipt;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,10 +23,10 @@ public class ReceiptRepositoryTest extends ContainerBase {
     @Autowired
     ReceiptRepository receiptRepository;
 
-    private Author setAuthor(Long receiptId){
+    private Author setAuthor(){
 
         return new Author(
-                "author with receipt " + receiptId,
+                "author with receipt ",
                 "name",
                 "surname",
                 null
@@ -65,7 +68,7 @@ public class ReceiptRepositoryTest extends ContainerBase {
                 editable,
                 cookTime,
                 portion,
-                setAuthor(id),
+                setAuthor(),
                 setCategory(),
                 setEnergyValue()
         );
@@ -116,7 +119,7 @@ public class ReceiptRepositoryTest extends ContainerBase {
     @Test
     public void testFindAll() {
         var receipts = receiptRepository.getAllReceipts();
-        Assertions.assertEquals(receipts.size(), 3);
+        assertEquals(receipts.size(), 3);
 
     }
 
@@ -124,15 +127,15 @@ public class ReceiptRepositoryTest extends ContainerBase {
     public void testFindById(){
 
         Receipt first = receiptRepository.findById(1L).get();
-        Assertions.assertEquals(first.getId(), 1L);
+        assertEquals(first.getId(), 1L);
 
         Receipt second = receiptRepository.findById(2L).get();
-        Assertions.assertEquals(second.getId(), 2L);
+        assertEquals(second.getId(), 2L);
 
         Receipt third = receiptRepository.findById(3L).get();
-        Assertions.assertEquals(third.getId(), 3L);
+        assertEquals(third.getId(), 3L);
 
-        Assertions.assertFalse(receiptRepository.findById(4L).isPresent());
+        assertFalse(receiptRepository.findById(4L).isPresent());
 
     }
 
@@ -143,18 +146,18 @@ public class ReceiptRepositoryTest extends ContainerBase {
         var list
                 = receiptRepository.getReceiptsByCategoryId(1);
         for(var i : list){
-            Assertions.assertEquals(i.getName(), "first");
+            assertEquals(i.getName(), "first");
         }
 
         var list2
                 = receiptRepository.getReceiptsByCategoryId(2);
         for(var i : list2){
-            Assertions.assertEquals(i.getName(), "second");
+            assertEquals(i.getName(), "second");
         }
 
         var list3
                 = receiptRepository.getReceiptsByCategoryId(5);
-        Assertions.assertTrue(list3.isEmpty());
+        assertTrue(list3.isEmpty());
 
     }
 

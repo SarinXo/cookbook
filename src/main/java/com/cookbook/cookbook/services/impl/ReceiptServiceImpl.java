@@ -57,7 +57,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     private List<String> parseReceiptStringToList(String string){
-        return Arrays.asList(string.split("        "));//8 spaces. Databases need refactoring
+        return Arrays.asList(string.split("        "));//8 spaces. Database refactoring needed
     }
 
     public List<ReceiptPhotoNameShortDescriptionDto> getAllReceipts(){
