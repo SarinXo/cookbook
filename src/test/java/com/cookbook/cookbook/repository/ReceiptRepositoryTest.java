@@ -23,57 +23,6 @@ public class ReceiptRepositoryTest extends ContainerBase {
     @Autowired
     ReceiptRepository receiptRepository;
 
-    private Author setAuthor(){
-
-        return new Author(
-                "author with receipt ",
-                "name",
-                "surname",
-                null
-                );
-    }
-
-    private Category setCategory(){
-
-        return new Category(
-                0,
-                "",
-                null
-        );
-
-    }
-
-    private EnergyValue setEnergyValue(){
-        return new EnergyValue(
-                22,
-                200,
-                400,
-                500,
-                700,
-                null
-        );
-    }
-
-    private Receipt setReceipt(Long id, String name, String shortDescription, String photo,
-                       String ingredients, String receipt, Double rating, Boolean editable,
-                       Integer cookTime, Integer portion) {
-        return new Receipt(
-                id,
-                name,
-                shortDescription,
-                photo,
-                ingredients,
-                receipt,
-                rating,
-                editable,
-                cookTime,
-                portion,
-                setAuthor(),
-                setCategory(),
-                setEnergyValue()
-        );
-    }
-
     @BeforeEach
     public void initDB(){
         receiptRepository.saveAll(List.of(
@@ -116,6 +65,55 @@ public class ReceiptRepositoryTest extends ContainerBase {
         ));
     }
 
+    private Receipt setReceipt(Long id, String name, String shortDescription, String photo,
+                               String ingredients, String receipt, Double rating, Boolean editable,
+                               Integer cookTime, Integer portion) {
+        return new Receipt(
+                id,
+                name,
+                shortDescription,
+                photo,
+                ingredients,
+                receipt,
+                rating,
+                editable,
+                cookTime,
+                portion,
+                setAuthor(),
+                setCategory(),
+                setEnergyValue()
+        );
+    }
+    private Author setAuthor(){
+
+        return new Author(
+                "author with receipt ",
+                "name",
+                "surname",
+                null
+        );
+    }
+
+    private Category setCategory(){
+
+        return new Category(
+                0,
+                "",
+                null
+        );
+
+    }
+
+    private EnergyValue setEnergyValue(){
+        return new EnergyValue(
+                22,
+                200,
+                400,
+                500,
+                700,
+                null
+        );
+    }
     @Test
     public void testFindAll() {
         var receipts = receiptRepository.getAllReceipts();
@@ -141,7 +139,6 @@ public class ReceiptRepositoryTest extends ContainerBase {
 
     @Test
     public void testGetReceiptsByCategoryId(){
-
 
         var list
                 = receiptRepository.getReceiptsByCategoryId(1);
