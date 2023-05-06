@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @ExtendWith({SpringExtension.class})
 @Import({ReceiptServiceImpl.class})
-public class ReceiptRepositoryMockTest {
+public class ReceiptServiceMockRepositoryTest {
 
     @MockBean
     public ReceiptRepository receiptRepository;

@@ -18,46 +18,16 @@ import org.springframework.context.annotation.Import;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @Import({ReceiptServiceImpl.class})
-public class ReceiptRepositoryTest extends ContainerBase {
+public class ReceiptServiceTest extends ContainerBase {
 
     @Autowired
     ReceiptRepository receiptRepository;
     @Autowired
     ReceiptService receiptService;
-
-    private Author setAuthor(){
-
-        return new Author(
-                "author with receipt ",
-                "name",
-                "surname",
-                null
-        );
-    }
-
-    private Category setCategory(){
-
-        return new Category(
-                0,
-                "",
-                null
-        );
-
-    }
-
-    private EnergyValue setEnergyValue(){
-        return new EnergyValue(
-                22,
-                200,
-                400,
-                500,
-                700,
-                null
-        );
-    }
 
     private Receipt setReceipt(Long id, String name, String shortDescription, String photo,
                                String ingredients, String receipt, Double rating, Boolean editable,
@@ -77,6 +47,36 @@ public class ReceiptRepositoryTest extends ContainerBase {
                 setCategory(),
                 setEnergyValue()
         );
+    }
+    private EnergyValue setEnergyValue(){
+        return new EnergyValue(
+                22,
+                200,
+                400,
+                500,
+                700,
+                null
+        );
+    }
+
+    private Author setAuthor(){
+
+        return new Author(
+                "author with receipt ",
+                "name",
+                "surname",
+                null
+        );
+    }
+
+    private Category setCategory(){
+
+        return new Category(
+                0,
+                "",
+                null
+        );
+
     }
 
     @BeforeEach
@@ -136,18 +136,14 @@ public class ReceiptRepositoryTest extends ContainerBase {
     @Test
     public void getAllReceiptsTest(){
         assertEquals(receiptService.getAllReceipts().size(), 3);
-
     }
 
     @Test
     public void getReceiptsByCategoryIdTest(){
-
         assertEquals(receiptService.getReceiptsByCategoryId(1).size(), 1);
         assertEquals(receiptService.getReceiptsByCategoryId(2).size(), 1);
         assertEquals(receiptService.getReceiptsByCategoryId(3).size(), 1);
-        assertEquals(receiptService.getReceiptsByCategoryId(1).size(), 0);
-
-
+        assertTrue(receiptService.getReceiptsByCategoryId(1).isEmpty());
     }
 
 
