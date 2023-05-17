@@ -26,7 +26,7 @@ public class ReceiptController {
 
     @ResponseBody
     @GetMapping("/api/v1/receipt")
-    public ReceiptDto getReceiptById(@RequestParam Long id){
+    public s getReceiptById(@RequestParam Long id){
         return receiptService.getReceiptById(id);
     }
 
